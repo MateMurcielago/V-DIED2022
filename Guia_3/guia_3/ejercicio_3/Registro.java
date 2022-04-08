@@ -65,4 +65,20 @@ public class Registro {
 		media = media / (30 - this.capacidadDisp);
 		return media;
 	}
+	
+	public Temperatura maximo() {
+		Temperatura maximo = new Temperatura();
+		for(int i = 0; i < 30 - this.capacidadDisp; i++) {
+			if(this.historico[i].escala == Escala.CELCIUS) {
+				if(maximo.grados < this.historico[i].grados) {
+					maximo.grados = this.historico[i].grados;
+				}
+			} else {
+				if(maximo.grados < this.historico[i].asCelcius()) {
+					maximo.grados = this.historico[i].asCelcius();
+				}
+			}
+		}
+		return maximo;
+	}
 }
